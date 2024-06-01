@@ -50,7 +50,7 @@ export default function TextForm(props) {
     props.showAlert("Extra space has been removed","success");
   };
 
-  const translateButton = () => {};
+  // const translateButton = () => {};
 
   const handleOnChange = (event) => {
     // console.log("On chnage");
@@ -106,9 +106,9 @@ export default function TextForm(props) {
         >
           Remove Extra Space
         </button>
-        <button className="btn btn-primary mx-1" onClick={translateButton}>
+        {/* <button className="btn btn-primary mx-1" onClick={translateButton}>
           Translate
-        </button>
+        </button> */}
       </div>
       <div
         className="container my-3"
