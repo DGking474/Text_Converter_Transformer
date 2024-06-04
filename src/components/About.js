@@ -1,40 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
+export default function About(props) {
 
-    // let myStyle = {
-    //     backgroundColor: 'black',
-    //     color: 'white'
-    // }
-    const [myStyle,setMyStyle] = useState({
-        backgroundColor: 'white',
-        color: 'black'
-    })
-
-    const [btnname,setBtnName] = useState('Light mode')
-
-    const toggleStyle = ()=>{
-        if(myStyle.backgroundColor === 'white'){
-            setMyStyle({
-                backgroundColor: 'black',
-                color: 'white',
-                border: '1px solid white'
-            })
-            setBtnName('Dark mode')  
-        }
-        else{
-            setMyStyle({
-                backgroundColor: 'white',
-                color: 'black'
-            })
-            setBtnName('Light mode')
-        }
+    let myStyle = {
+        backgroundColor: props.mode === 'dark'?'black':'white',
+        color: props.mode === 'dark'?'white':'black'
     }
+    // const [myStyle,setMyStyle] = useState({
+    //     backgroundColor: 'white',
+    //     color: 'black'
+    // })
+
+    // const [btnname,setBtnName] = useState('Light mode')
+
+    // const toggleStyle = ()=>{
+    //     if(myStyle.backgroundColor === 'white'){
+    //         setMyStyle({
+    //             backgroundColor: 'black',
+    //             color: 'white',
+    //             border: '1px solid white'
+    //         })
+    //         setBtnName('Dark mode')  
+    //     }
+    //     else{
+    //         setMyStyle({
+    //             backgroundColor: 'white',
+    //             color: 'black'
+    //         })
+    //         setBtnName('Light mode')
+    //     }
+    // }
 
   return (
     <div className="container" style={myStyle}>
         <h1>About Us</h1>
-      <div className="accordion accordion-flush" id="accordionFlushExample">
+      <div className="accordion accordion-flush" id="accordionFlushExample" style={{border: props.mode === 'dark'?'1px solid white':'1px solid black'}}>
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button
@@ -46,7 +46,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="flush-collapseOne"
             >
-              Accordion Item #1
+              <strong>Word Count</strong>
             </button>
           </h2>
           <div
@@ -55,9 +55,7 @@ export default function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is the
-              first item's accordion body.
+              Instantly get detailed counts of words, characters (with and without spaces), lines, and paragraphs. This feature is invaluable for writers, editors, and anyone needing precise text metrics.
             </div>
           </div>
         </div>
@@ -72,7 +70,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="flush-collapseTwo"
             >
-              Accordion Item #2
+              <strong>Case Management</strong>
             </button>
           </h2>
           <div
@@ -81,10 +79,11 @@ export default function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is the
-              second item's accordion body. Let's imagine this being filled with
-              some actual content.
+              Advanced case handling beyond basic conversion:
+
+              Sentence Case: Convert text to sentence case where the first letter of each sentence is capitalized.
+              Toggle Case: Invert the case of each character in the text.
+              Random Case: Apply random casing to characters for a quirky text effect.
             </div>
           </div>
         </div>
@@ -99,7 +98,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              Accordion Item #3
+              <strong>Whitespace Management</strong>
             </button>
           </h2>
           <div
@@ -108,20 +107,19 @@ export default function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> className. This is the
-              third item's accordion body. Nothing more exciting happening here
-              in terms of content, but just filling up the space to make it
-              look, at least at first glance, a bit more representative of how
-              this would look in a real-world application.
+              Manage whitespace with precision:
+
+              Trim Whitespace: Remove leading and trailing spaces from each line.
+              Collapse Spaces: Reduce multiple consecutive spaces to a single space.
+              Remove Extra Lines: Eliminate unnecessary blank lines to tidy up your text.
             </div>
           </div>
         </div>
       </div>
-      <div className="form-check form-switch my-3">
+      {/* <div className="form-check form-switch my-3">
         <input className="form-check-input" onClick={toggleStyle} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{btnname}</label>
-    </div>
+    </div> */}
       {/* <div className="container my-3">
         <button onClick={toggleStyle} type="button" className="btn btn-primary">{btnname}</button>
       </div> */}

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -14,7 +14,7 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "black";
       showAlert("Dark mode has been enabled", "success");
-      document.title = "Textutil - Dark Mode";
+      // document.title = "Textutil - Dark Mode";
       // setInterval(()=>{
       //   document.title = 'Textutil is Amazing Mode'
       // },2000);
@@ -25,7 +25,7 @@ function App() {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been enabled", "success");
-      document.title = "Textutil - Light Mode";
+      // document.title = "Textutil - Light Mode";
     }
   };
 
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar
           title="Textutil"
           aboutText="About Us"
@@ -52,22 +52,22 @@ function App() {
         />
         <Alert alert={alert} />
         <div className="container my-3">
-          {/* <Switch> */}
+          <Switch>
             {/* users --> components 1 (use exact to access perfect match)
             users/home --> components 2 */}
-            {/* <Route exact path="/about">
-              <About />
+            <Route exact path="/about">
+              <About mode={mode}/>
             </Route>
-            <Route exact path="/"> */}
+            <Route exact path="/">
               <TextForm
-                heading="Enter the text to analyze below"
+                heading="Try TextUtils - Word Counter,Character Counter,Remove extra Spaces"
                 showAlert={showAlert}
                 mode={mode}
               />
-            {/* </Route> */}
-          {/* </Switch> */}
+            </Route>
+          </Switch>
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
